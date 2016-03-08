@@ -1,0 +1,18 @@
+Package: fuzzyjoin
+Type: Package
+Title: Join tables together on inexact matching
+Version: 0.1
+Date: 2016-02-18
+Author: c(person("David", "Robinson", email = "drobinson@stackoverflow.com",
+    role = c("aut", "cre")))
+Maintainer: David Robinson <drobinson@stackoverflow.com>
+Description: Join tables together on inexact matching
+License: MIT + file LICENSE
+LazyData: TRUE
+VignetteBuilder: knitr
+Imports:
+    stringdist,
+    stringr
+Suggests:
+    testthat
+RoxygenNote: 5.0.1
