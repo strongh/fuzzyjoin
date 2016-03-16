@@ -21,10 +21,8 @@ fuzzy_join <- function(x, y, by = NULL, match_fun, ...) {
     col_x <- x[[by$x[i]]]
     col_y <- y[[by$y[i]]]
 
-    indices_x <- data_frame(col = col_x, indices = seq_along(col_x)) %>%
-      tidyr::nest(indices)
-    indices_y <- data_frame(col = col_y, indices = seq_along(col_y)) %>%
-      tidyr::nest(indices)
+    indices_x <- data_frame(col = col_x, indices = seq_along(col_x))
+    indices_y <- data_frame(col = col_y, indices = seq_along(col_y))
 
     u_x <- indices_x$col
     u_y <- indices_y$col
@@ -38,10 +36,10 @@ fuzzy_join <- function(x, y, by = NULL, match_fun, ...) {
     w <- which(m)
     x_indices <- ((w - 1) %% n_x) + 1
     y_indices <- floor((w - 1) / n_x) + 1
+    x_indices_l <- indices_x[x_indices,]
+    y_indices_l <- indices_y[y_indices,]
     x_indices_l <- indices_x$indices[x_indices]
     y_indices_l <- indices_y$indices[y_indices]
-
-    num_each <- sapply(x_indices_l, length) * sapply(y_indices_l, length)
 
     xls <- sapply(x_indices_l, length)
     yls <- sapply(y_indices_l, length)
